@@ -2,7 +2,7 @@
 
 echo "====== TurtleBot3 First Boot Setup ======"
 
-read -p "Enter new hostname (example: turtlebot3_01): " NEW_HOSTNAME
+#read -p "Enter new hostname (example: turtlebot3_01): " NEW_HOSTNAME
 read -p "Enter static IP (example: 192.168.1.51): " NEW_IP
 read -p "Enter ROS_DOMAIN_ID (example: 1): " ROS_DOMAIN_ID
 
@@ -12,8 +12,8 @@ echo ""
 echo "Using netplan file: $NETPLAN_FILE"
 echo ""
 
-echo "Setting hostname..."
-hostnamectl set-hostname $NEW_HOSTNAME
+#echo "Setting hostname..."
+#hostnamectl set-hostname $NEW_HOSTNAME
 
 echo "Updating /etc/hosts..."
 sed -i "s/127.0.1.1.*/127.0.1.1 $NEW_HOSTNAME/g" /etc/hosts
