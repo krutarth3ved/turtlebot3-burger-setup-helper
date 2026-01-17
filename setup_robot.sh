@@ -21,14 +21,16 @@ sed -i "s/127.0.1.1.*/127.0.1.1 $NEW_HOSTNAME/g" /etc/hosts
 echo "Updating static IP..."
 sed -i "s/[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}\/24/$NEW_IP\/24/g" $NETPLAN_FILE
 
-echo "Applying netplan..."
-netplan apply
-
 echo "Setting ROS_DOMAIN_ID..."
 grep -qxF "export ROS_DOMAIN_ID=$ROS_DOMAIN_ID" ~/.bashrc || echo "export ROS_DOMAIN_ID=$ROS_DOMAIN_ID" >> ~/.bashrc
 
 echo ""
-echo "Setup complete."
-echo "Please reboot system."
+echo "Setup almost complete."
+echo "SSH terminal will disconnect. Reconnect using new ip now"
+
+echo "Applying netplan...(last step) try ping to new ip now"
+netplan apply
+
+
 
 echo "========================================="
