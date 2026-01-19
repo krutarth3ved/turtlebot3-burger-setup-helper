@@ -2,7 +2,7 @@
 
 
 - *https://docs.ros.org/en/humble/How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html*
-- https://hub.docker.com/_/ros
+- *https://hub.docker.com/_/ros*
 
 4 commands to connect with docker 
 
@@ -30,4 +30,24 @@ docker rm 624cf00b77bf
 ```bash
 docker start -ai practical_shannon
 ```
-- 
+- If you want to use the same docker in other terminal use
+```bash
+docker exec -it practical_shannon bash
+```
+- Then for turtlebot 3 go for this command
+```
+apt install -y ros-$ROS_DISTRO-turtlebot3-msgs \
+               ros-$ROS_DISTRO-turtlebot3 \
+               ros-$ROS_DISTRO-turtlebot3-simulations \
+               ros-$ROS_DISTRO-navigation2 \
+               ros-$ROS_DISTRO-nav2-bringup \
+               ros-$ROS_DISTRO-slam-toolbox
+```
+
+- TurtleBot code for checking
+```bash
+ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
+ros2 run turtlebot3_teleop teleop_keyboard
+ros2 launch gazebo_ros gazebo.launch.py gui:=false
+```
+
