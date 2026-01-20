@@ -50,4 +50,10 @@ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ros2 run turtlebot3_teleop teleop_keyboard
 ros2 launch gazebo_ros gazebo.launch.py gui:=false
 ```
+- Docker copying file to desktop
+```bash
+docker cp practical_shannon:/frames_2026-01-19_07.07.38.pdf ~/Desktop/
+```
 
+- Docker blind mount to the local device so that Visual Studio Code can be accessed
+```bash
