@@ -59,7 +59,7 @@ docker cp practical_shannon:/frames_2026-01-19_07.07.38.pdf ~/Desktop/
 docker commit practical_shannon turtlebot_ready
 ```
 - Docker command for full installation with GUI and XE11 Forwarding
-```
+```bash
 docker run -it \
   --name turtlebot_stable \
   --network host \
@@ -69,6 +69,19 @@ docker run -it \
   --env="QT_X11_NO_MITSHM=1" \
   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
   turtlebot_ready
+```
+- Docker shared memory fixed
+```bash
+export QT_X11_NO_MITSHM=1
+export _X11_NO_MITSHM=1
+export MITSHM=0
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+```
+
+- Docker wayland problem for RViz while using cartographer if using Ubuntu 22.04, 24.04
+```bash
+export QT_QPA_PLATFORM=xcb
+ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ```
 
 - Docker blind mount to the local device so that Visual Studio Code can be accessed
