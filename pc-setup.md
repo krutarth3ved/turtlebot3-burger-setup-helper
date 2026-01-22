@@ -4,7 +4,7 @@
 - *https://docs.ros.org/en/humble/How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html*
 - *https://hub.docker.com/_/ros*
 
-4 commands to connect with docker 
+Commands to connect with docker 
 
 - save current container progress/changes in an image file for reuse
 ```bash
@@ -53,6 +53,22 @@ ros2 launch gazebo_ros gazebo.launch.py gui:=false
 - Docker copying file to desktop
 ```bash
 docker cp practical_shannon:/frames_2026-01-19_07.07.38.pdf ~/Desktop/
+```
+- Docker attach the container to another one  
+```bash
+docker commit practical_shannon turtlebot_ready
+```
+- Docker command for full installation with GUI and XE11 Forwarding
+```
+docker run -it \
+  --name turtlebot_stable \
+  --network host \
+  --privileged \
+  --device /dev/dri:/dev/dri \
+  --env="DISPLAY=$DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+  turtlebot_ready
 ```
 
 - Docker blind mount to the local device so that Visual Studio Code can be accessed
