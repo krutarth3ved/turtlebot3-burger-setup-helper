@@ -83,6 +83,10 @@ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 export QT_QPA_PLATFORM=xcb
 ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ```
+- Docker inside container map saving command
+```bash
+apt update && apt install ros-humble-nav2-map-server -y
+```
 
 - Docker blind mount to the local device so that Visual Studio Code can be accessed
 ```bash
