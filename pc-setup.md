@@ -90,3 +90,17 @@ apt update && apt install ros-humble-nav2-map-server -y
 
 - Docker blind mount to the local device so that Visual Studio Code can be accessed
 ```bash
+%create a directory to link
+mkdir -p ~/turtlebot_research/src
+%create a container with volume mount
+docker run -it \
+  --name turtlebot_research_env \
+  --network host \
+  --privileged \
+  --device /dev/dri:/dev/dri \
+  --env="DISPLAY=$DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+  --volume="$HOME/turtlebot_research:/root/turtlebot_research" \
+  turtlebot_ready
+```
