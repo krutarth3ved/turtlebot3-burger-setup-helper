@@ -104,3 +104,15 @@ docker run -it \
   --volume="$HOME/turtlebot_research:/root/turtlebot_research" \
   turtlebot_ready
 ```
+- Docker pull from my own docker repository
+```bash
+# They run this to get your exact environment
+docker pull carmaer54/turtlebot_ready:v1.0
+
+# Then they can launch it with the graphics flags we used
+docker run -it --network host --privileged \
+  --device /dev/dri:/dev/dri \
+  --env="DISPLAY=$DISPLAY" \
+  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+  your_username/turtlebot_ready:v1.0
+```
