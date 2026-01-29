@@ -107,7 +107,7 @@ docker run -it \
 - Docker pull from my own docker repository
 ```bash
 # They run this to get your exact environment
-docker pull carmaer54/turtlebot_ready:v1.0
+docker pull cramer54/turtlebot_ready:v1.0
 
 # Then they can launch it with the graphics flags we used
 docker run -it --network host --privileged \
